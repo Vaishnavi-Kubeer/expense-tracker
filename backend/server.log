@@ -244,3 +244,7 @@
 2025-03-09 14:49:56,345 - db_helper - INFO - fetch_expenses_for_date called with 2024-11-21
 2025-03-09 15:15:11,934 - db_helper - INFO - fetch_expenses_for_date called with 2024-08-01
 2025-03-09 15:17:45,774 - db_helper - INFO - fetch_expenses_for_date called with 2024-08-01
+2025-03-09 15:30:02,348 - db_helper - INFO - fetch_expenses_for_date called with 2024-08-01
+2025-03-09 16:53:18,909 - db_helper - INFO - fetch_expense_by_month
+2025-03-09 16:53:40,686 - db_helper - INFO - fetch_expense_by_month
+2025-03-09 16:59:50,476 - db_helper - INFO - fetch_expense_by_month

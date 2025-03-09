@@ -15,10 +15,11 @@ logger=setup_logger('db_helper')
 @contextmanager
 def get_db_cursor(commit=False):
     connection = mysql.connector.connect(
-        host="localhost",
+        host="yamanote.proxy.rlwy.net",
         user="root",
-        password="root",
-        database="expense_manager"
+        password="rpAPMghWazSrgchtAPQPSLdqpMaytWiL",
+        database="expense_manager",
+        port="26897"
     )
 
     # if connection.is_connected():
