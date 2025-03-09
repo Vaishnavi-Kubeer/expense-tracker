@@ -1,8 +1,7 @@
-streamlit==1.35.0
-fastapi==0.112.2
-pydantic==1.10.9
-uvicorn==0.30.6
-mysql-connector-python==8.0.33
-pandas==2.0.2
-requests==2.31.0
-pytest==8.3.2
+streamlit==1.30.0  # More stable version
+fastapi==0.112.2  # Latest FastAPI version
+pydantic==2.7.1  # Compatible with FastAPI 0.112.2
+uvicorn==0.30.6  # ASGI server for FastAPI
+mysql-connector-python==8.0.33  # MySQL database connector
+pandas==2.0.2  # Data manipulation library
+requests==2.31.0  # HTTP requests library
