@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI,HTTPException
+from fastapi import FastAPI,HTTPException,Query
 from datetime import date
 from backend import db_helper
 from typing import List
@@ -47,9 +47,14 @@ def fetch_analytics(date_range:DateRange):
 
     return summary
 
+@app.get("/years")
+def fetch_available_years():
+    years=db_helper.fetch_expense_years()
+    return years
+
 @app.get("/analyticsByMonth/")
-def fetch_analytics_month():
-    expenses=db_helper.fetch_expense_by_month()
+def fetch_analytics_month(year:int = Query(..., description="Filter by year")):
+    expenses=db_helper.fetch_expense_by_month(year)
     if expenses is None:
         raise HTTPException(status_code=500, detail="Failed to retrieve summary from database")
     month={}
@@ -59,3 +64,4 @@ def fetch_analytics_month():
             "total":i['total_amount']
         }
     return month
+

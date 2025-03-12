@@ -112,11 +112,18 @@ def fetch_expense_summary(start_date, end_date):
         cursor.execute(query,(start_date, end_date))
         data = cursor.fetchall()
         return data
-def fetch_expense_by_month():
+def fetch_expense_years():
+    with get_db_cursor() as cursor:
+        query = "SELECT DISTINCT YEAR(expense_date) AS year FROM expenses ORDER BY year DESC;"
+        cursor.execute(query)
+        years = [row["year"] for row in cursor.fetchall()]
+        return years
+
+def fetch_expense_by_month(year):
     logger.info(f"fetch_expense_by_month")
     with get_db_cursor() as cursor:
-        query='SELECT MONTH(expense_date) AS month_number,MONTHNAME(expense_date) AS month_name,SUM(amount) AS total_amount FROM expenses GROUP BY MONTH(expense_date), MONTHNAME(expense_date) ORDER BY MONTH(expense_date);'
-        cursor.execute(query)
+        query='SELECT MONTH(expense_date) AS month_number,MONTHNAME(expense_date) AS month_name,SUM(amount) AS total_amount FROM expenses WHERE YEAR(expense_date) = %s GROUP BY MONTH(expense_date), MONTHNAME(expense_date) ORDER BY MONTH(expense_date);'
+        cursor.execute(query, (year,))
         data=cursor.fetchall()
         return data
 
@@ -132,5 +139,7 @@ if __name__ == "__main__":
     # expenses=fetch_expense_summary("2024-08-01","2024-08-05")
     # for e in expenses:
     #     print(e)
-    e=fetch_expense_by_month()
-    print(e)
+    # e=fetch_expense_by_month()
+    # print(e)
+    y=fetch_expense_years()
+    print(y)

@@ -11,16 +11,28 @@ API_URL="https://expense-tracker-g6xy.onrender.com"
 
 
 def analytics_by_month_tab():
-    pass
+    # Fetch available years from FastAPI
+    year_response = requests.get(f"{API_URL}/years")
+    if year_response.status_code == 200:
+        available_years = year_response.json()["years"]
+    else:
+        st.error("Failed to retrieve available years")
+        available_years = [datetime.now().year]  # Default to current year
+
+    # Year Selection Dropdown
+    selected_year = st.selectbox("Select Year", available_years)
 
     if st.button("Get Month Analytics"):
-        response = requests.get(f"{API_URL}/analyticsByMonth")
+        #response = requests.get(f"{API_URL}/analyticsByMonth")
+        response = requests.get(f"{API_URL}/analyticsByMonth", params={"year": selected_year})
         if response.status_code==200:
             expense_summary= response.json()
             # st.write(expense_summary)
         else:
             st.error("Failed to retrieve expenses data")
             expense_summary=[]
+        if not expense_summary:
+            st.warning("No data available for selected year")
 
         data ={
             "Month_number":[int(c) for c in expense_summary.keys()],
