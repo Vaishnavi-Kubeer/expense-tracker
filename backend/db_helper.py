@@ -2,7 +2,8 @@ import mysql.connector
 import logging
 from contextlib import contextmanager
 from backend.logging_setup import setup_logger
-
+import os
+from urllib.parse import urlparse
 
 # connection = mysql.connector.connect(
 #         host="localhost",
@@ -13,19 +14,39 @@ from backend.logging_setup import setup_logger
 
 logger=setup_logger('db_helper')
 
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("🚨 DATABASE_URL is not set! Check Render environment variables.")
+
+# Parse the connection string
+db_url = urlparse(DATABASE_URL)
+
+db_host = db_url.hostname
+db_user = db_url.username
+db_password = db_url.password
+db_name = db_url.path[1:]  # Remove leading "/"
+db_port = db_url.port if db_url.port else 3306  # Default to 3306 if None
+
+#print(f"🔹 Connecting to MySQL: {db_host}:{db_port}, Database: {db_name}")
+
+# db_config = {
+#     "host": db_url.hostname,
+#     "user": db_url.username,
+#     "password": db_url.password,
+#     "database": db_url.path[1:],  # Remove leading '/'
+#     "port": db_url.port
+# }
+
 @contextmanager
 def get_db_cursor(commit=False):
     connection = mysql.connector.connect(
-        # host="yamanote.proxy.rlwy.net",
-        # user="root",
-        # password="rpAPMghWazSrgchtAPQPSLdqpMaytWiL",
-        # database="expense_manager",
-        # port="26897"
-        host="localhost",
-        user="root",
-        password="root",
-        database="expense_manager"
-    )
+    host=db_host,
+    user=db_user,
+    password=db_password,
+    database=db_name,
+    port=db_port
+)
 
     # if connection.is_connected():
     #     print("Connection Successful")
