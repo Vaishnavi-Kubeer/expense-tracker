@@ -14,7 +14,7 @@ def analytics_by_Category_tab():
     col1,col2=st.columns(2)
     with col1:
         #To take first day of current month
-        start_date = st.date_input("start Date", datetime.today().replace(day=1).date)
+        start_date = st.date_input("start Date", datetime.today().replace(day=1).date())
     with col2:
         #Takes current date
         end_date = st.date_input("end Date",datetime.today().date())
