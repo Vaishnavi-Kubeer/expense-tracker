@@ -14,7 +14,7 @@ def analytics_by_month_tab():
     # Fetch available years from FastAPI
     year_response = requests.get(f"{API_URL}/years")
     if year_response.status_code == 200:
-        available_years = year_response.json()["years"]
+        available_years = year_response.json()
     else:
         st.error("Failed to retrieve available years")
         available_years = [datetime.now().year]  # Default to current year
