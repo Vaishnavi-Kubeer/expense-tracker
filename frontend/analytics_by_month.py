@@ -6,8 +6,8 @@ from streamlit import bar_chart
 import altair as alt
 
 
-API_URL="http://localhost:8000"
-
+#API_URL="http://localhost:8000"
+API_URL="https://expense-tracker-g6xy.onrender.com"
 
 
 def analytics_by_month_tab():
