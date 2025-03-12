@@ -5,7 +5,8 @@ from add_update import add_update_tab
 from analytics_by_category import analytics_by_Category_tab
 from analytics_by_month import analytics_by_month_tab
 
-API_URL="http://localhost:8000"
+#API_URL="http://localhost:8000"
+API_URL="https://expense-tracker-g6xy.onrender.com"
 
 st.title("Expense Management System")
 
