@@ -5,6 +5,23 @@ from add_update import add_update_tab
 from analytics_by_category import analytics_by_Category_tab
 from analytics_by_month import analytics_by_month_tab
 
+# Load username/password from Streamlit secrets
+USERNAME = st.secrets["USERNAME"]
+PASSWORD = st.secrets["PASSWORD"]
+
+# Login form
+st.title("Login to Access")
+entered_user = st.text_input("Username")
+entered_pass = st.text_input("Password", type="password")
+login_button = st.button("Login")
+
+if login_button:
+    if entered_user == USERNAME and entered_pass == PASSWORD:
+        st.success("Login Successful!")
+        st.experimental_set_query_params(auth="true")
+    else:
+        st.error("Invalid credentials")
+
 #API_URL="http://localhost:8000"
 API_URL="https://expense-tracker-g6xy.onrender.com"
 
