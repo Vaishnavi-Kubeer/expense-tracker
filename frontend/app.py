@@ -5,41 +5,45 @@ from add_update import add_update_tab
 from analytics_by_category import analytics_by_Category_tab
 from analytics_by_month import analytics_by_month_tab
 
-# Load username/password from Streamlit secrets
-USERNAME = st.secrets["USERNAME"]
-PASSWORD = st.secrets["PASSWORD"]
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
 
-# Login form
-st.title("Login to Access Expense Management system")
-entered_user = st.text_input("Username")
-entered_pass = st.text_input("Password", type="password")
-login_button = st.button("Login")
-login_success=False
+# If not logged in, show login form
+if not st.session_state.logged_in:
+    st.title("Login to Access Expense Management System")
 
-if login_button:
-    if entered_user == USERNAME and entered_pass == PASSWORD:
-        st.success("Login Successful!")
-        login_success=True
-        st.experimental_set_query_params(auth="true")
-    else:
-        st.error("Invalid credentials")
+    entered_user = st.text_input("Username")
+    entered_pass = st.text_input("Password", type="password")
+    login_button = st.button("Login")
 
+    # Check credentials
+    if login_button:
+        if entered_user == st.secrets["USERNAME"] and entered_pass == st.secrets["PASSWORD"]:
+            st.session_state.logged_in = True  # Store login state in session
+            st.success("Login Successful!")
+            st.rerun()  # Refresh page to show the main content
+        else:
+            st.error("Invalid credentials")
+    st.stop()  # Prevent the rest of the app from loading until logged in
 
-if login_success:
-    # API_URL="http://localhost:8000"
-    API_URL = "https://expense-tracker-g6xy.onrender.com"
+# If logged in, show the main app
+st.title("Expense Management System")
 
-    st.title("Expense Management System")
+API_URL = "https://expense-tracker-g6xy.onrender.com"
 
-    tab1, tab2, tab3 = st.tabs(["Add/Update", "Analytics By Category", "Analytics By Month"])
+tab1, tab2, tab3 = st.tabs(["Add/Update", "Analytics By Category", "Analytics By Month"])
 
-    with tab1:
-        add_update_tab()
-    with tab2:
-        analytics_by_Category_tab()
-    with tab3:
-        analytics_by_month_tab()
+with tab1:
+    add_update_tab()
+with tab2:
+    analytics_by_Category_tab()
+with tab3:
+    analytics_by_month_tab()
 
+# Logout Button
+if st.sidebar.button("Logout"):
+    st.session_state.logged_in = False  # Clear login state
+    st.rerun()  # Refresh page to return to login screen
 
 
 
