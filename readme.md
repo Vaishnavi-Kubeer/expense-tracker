@@ -9,25 +9,22 @@ This project is an expense management system that consists of a Streamlit fronte
 - **backend/**: Contains the FastAPI backend server code.
 - **tests/**: Contains the test cases for both frontend and backend.
 - **requirements.txt**: Lists the required Python packages.
+- **runtime.txt**: Provides version of python used for the project.
 - **README.md**: Provides an overview and instructions for the project.
 
+## 📌 Features
 
-## Setup Instructions
+✅ **Add & Update Expenses** (Amount, Category, Notes)  
+✅ **View Total Spending** in real-time for selected date
+✅ **Analytics by Category & Month** ( Bar graphs)  
+✅ **User Authentication** (via `st.secrets`)  
+✅ **FastAPI Backend** for data storage & retrieval  
+✅ **MySQL Database Integration** to store expenses data
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/expense-management-system.git
-   cd expense-management-system
-   ```
-1. **Install dependencies:**:   
-   ```commandline
-    pip install -r requirements.txt
-   ```
-1. **Run the FastAPI server:**:   
-   ```commandline
-    uvicorn server.server:app --reload
-   ```
-1. **Run the Streamlit app:**:   
-   ```commandline
-    streamlit run frontend/app.py
-   ```
+## 🛠️ Tech Stack
+| Component  | Technology |
+|------------|-------------|
+| **Frontend** | Streamlit |
+| **Backend**  | FastAPI  |
+| **Database** | MySQL  |
+| **Hosting**  | Railway(Database)| Render (Backend,FastAPI) & Streamlit Cloud (Frontend) |
