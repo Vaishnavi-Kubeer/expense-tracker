@@ -59,7 +59,7 @@ def add_update_tab():
                 "category": category_input,
                 "notes": notes_input
             })
-        st.markdown(f"💰 Total Amount Spent: INR{st.session_state.total_amount:.2f}")
+        st.markdown(f"💰 Total Amount Spent: INR {st.session_state.total_amount:.2f}")
         submit_button=st.form_submit_button()
         if submit_button:
             # Filter out empty expenses where amount is 0 and notes are empty
