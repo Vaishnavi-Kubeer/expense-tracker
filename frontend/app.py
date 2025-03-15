@@ -35,7 +35,7 @@ if "logged_in" not in st.session_state:
 
 # If not logged in, show login form
 if not st.session_state.logged_in:
-    st.title("Login to Access Expense Management System")
+    st.title("Login to Expense Tracker")
 
     entered_user = st.text_input("Username")
     entered_pass = st.text_input("Password", type="password")

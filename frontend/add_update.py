@@ -19,6 +19,15 @@ def add_update_tab():
     categories=["Rent","Food","Shopping","Entertainment","Groceries","Travelling","Vacation","Other"]
     expenses_data = []
 
+    def update_total():
+        st.session_state.total_amount = sum(
+            st.session_state.get(f"amount_{i}", 0.0) for i in range(7)
+        )
+
+    # Initialize session state total amount if not set
+    if "total_amount" not in st.session_state:
+        st.session_state.total_amount = 0.0
+
     with st.form(key="expense_form"):
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -39,7 +48,7 @@ def add_update_tab():
 
             col1,col2,col3=st.columns(3)
             with col1:
-                amount_input=st.number_input(label="Amount",min_value=0.0,step=1.0,value=amount,key=f"amount_{i}",label_visibility="collapsed")
+                amount_input=st.number_input(label="Amount",min_value=0.0,step=1.0,value=amount,on_change=update_total(), key=f"amount_{i}",label_visibility="collapsed")
             with col2:
                 category_input=st.selectbox(label="Category",options=categories,index=categories.index(category) ,key=f"category_{i}",label_visibility="collapsed")
             with col3:
@@ -50,7 +59,7 @@ def add_update_tab():
                 "category": category_input,
                 "notes": notes_input
             })
-
+        st.markdown(f"💰 Total Amount Spent: INR{st.session_state.total_amount:.2f}")
         submit_button=st.form_submit_button()
         if submit_button:
             # Filter out empty expenses where amount is 0 and notes are empty
