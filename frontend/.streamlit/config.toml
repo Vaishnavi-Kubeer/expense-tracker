@@ -1,6 +1,0 @@
-[theme]
-primaryColor = "#FF5733"  # Button color
-backgroundColor = "#F0F0F5"  # Page background
-secondaryBackgroundColor = "#EAEAEA"  # Sidebar background
-textColor = "#333333"  # Text color
-font = "monospace"  # Options: "sans serif", "serif", "monospace"

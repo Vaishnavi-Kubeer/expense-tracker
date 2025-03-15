@@ -31,13 +31,28 @@ st.title("Expense Management System")
 
 API_URL = "https://expense-tracker-g6xy.onrender.com"
 
-tab1, tab2, tab3 = st.tabs(["Add/Update", "Analytics By Category", "Analytics By Month"])
+# tab1, tab2, tab3 = st.tabs(["Add/Update", "Analytics By Category", "Analytics By Month"])
+#
+# with tab1:
+#     add_update_tab()
+# with tab2:
+#     analytics_by_Category_tab()
+# with tab3:
+#     analytics_by_month_tab()
 
-with tab1:
+# Sidebar Navigation
+with st.sidebar:
+    st.title("Navigation")
+    selected_tab = st.radio("Go to", ["Add/Update", "Analytics (Category)", "Analytics (Month)"])
+
+# Main Content Based on Sidebar Selection
+st.title("Expense Management System")
+
+if selected_tab == "Add/Update":
     add_update_tab()
-with tab2:
+elif selected_tab == "Analytics (Category)":
     analytics_by_Category_tab()
-with tab3:
+elif selected_tab == "Analytics (Month)":
     analytics_by_month_tab()
 
 # Logout Button
