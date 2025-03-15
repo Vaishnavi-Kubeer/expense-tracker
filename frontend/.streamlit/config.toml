@@ -1,5 +1,0 @@
-primaryColor = "#FF5733"  # Button & highlight color
-backgroundColor = "#F0F0F5"  # Main page background
-secondaryBackgroundColor = "#EAEAEA"  # Sidebar background
-textColor = "#333333"  # Main text color
-font = "monospace"  # Available options: serif, sans serif, monospace
