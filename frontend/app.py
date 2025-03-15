@@ -12,7 +12,7 @@ def apply_custom_css():
     st.markdown(
         """
         <style>
-        .stApp { background-color: #F0F0F5; }
+        .stApp { background-color: #d1bc84; }
         html, body, [class*="st-"] { font-family: 'Poppins', sans-serif; }
         h1, h2, h3 { color: #FF5733; text-align: center; }
         div.stButton > button:first-child { background-color: #4CAF50; color: white; border-radius: 8px; }
