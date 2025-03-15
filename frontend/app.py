@@ -12,11 +12,20 @@ def apply_custom_css():
     st.markdown(
         """
         <style>
-        .stApp { background-color: #d1bc84; }
+        .stApp { background-color: #959bde; }
         html, body, [class*="st-"] { font-family: 'Poppins', sans-serif; }
         h1, h2, h3 { color: #FF5733; text-align: center; }
         div.stButton > button:first-child { background-color: #4CAF50; color: white; border-radius: 8px; }
         [data-testid="stSidebar"] { background-color: #EAEAEA; }
+        [data-testid="stSidebar"] {
+            background-color: #959bde !important;  /* Light Gray */
+        }
+
+        /* Add Padding & Rounded Corners to Sidebar */
+        [data-testid="stSidebar"] > div {
+            padding: 20px;
+            border-radius: 10px;
+        }
         </style>
         """,
         unsafe_allow_html=True
