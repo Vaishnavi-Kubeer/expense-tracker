@@ -5,6 +5,26 @@ from add_update import add_update_tab
 from analytics_by_category import analytics_by_Category_tab
 from analytics_by_month import analytics_by_month_tab
 
+st.set_page_config(page_title="Expense Tracker", layout="wide")
+
+# Global CSS function
+def apply_custom_css():
+    st.markdown(
+        """
+        <style>
+        .stApp { background-color: #F0F0F5; }
+        html, body, [class*="st-"] { font-family: 'Poppins', sans-serif; }
+        h1, h2, h3 { color: #FF5733; text-align: center; }
+        div.stButton > button:first-child { background-color: #4CAF50; color: white; border-radius: 8px; }
+        [data-testid="stSidebar"] { background-color: #EAEAEA; }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Apply styles (ONLY ONCE in app.py)
+apply_custom_css()
+
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
@@ -27,7 +47,7 @@ if not st.session_state.logged_in:
     st.stop()  # Prevent the rest of the app from loading until logged in
 
 # If logged in, show the main app
-st.title("Expense Management System")
+
 
 API_URL = "https://expense-tracker-g6xy.onrender.com"
 
