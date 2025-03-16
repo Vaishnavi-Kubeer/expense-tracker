@@ -27,4 +27,4 @@ This project is an expense management system that consists of a Streamlit fronte
 | **Frontend** | Streamlit |
 | **Backend**  | FastAPI  |
 | **Database** | MySQL  |
-| **Hosting**  | Railway(Database)| Render (Backend,FastAPI) & Streamlit Cloud (Frontend) |
+| **Hosting**  | Railway(Database), Render (Backend,FastAPI) & Streamlit Cloud (Frontend) |
