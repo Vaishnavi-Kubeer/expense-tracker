@@ -14,7 +14,7 @@ def apply_custom_css():
         <style>
         
         html, body, [class*="st-"] { font-family: 'Poppins', sans-serif; }
-        h1, h2, h3 { color: #05021a; text-align: center; }
+        h1, h2, h3 { color: #c2bbed; text-align: center; }
         div.stButton > button:first-child { background-color: #4CAF50; color: white; border-radius: 8px; }
 
         /* Add Padding & Rounded Corners to Sidebar */
